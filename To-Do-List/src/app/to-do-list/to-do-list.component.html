@@ -1,0 +1,122 @@
+<div class="container-fluid">
+  <mat-form-field class="example-full-width">
+    <mat-label> Quick Find - <mat-icon color="warn">find_in_page</mat-icon></mat-label>
+    <input matInput type="text" [(ngModel)]="term" placeholder="search.......">
+  </mat-form-field>
+
+  <div class="row">
+    <div class="col-md-3" style="background-color: black;height: 93vh">
+      <br>
+      <form class="form" [formGroup]="todoForm">
+        <ul class="list-group">
+          <mat-card-footer>
+            <mat-progress-bar mode="query"></mat-progress-bar>
+          </mat-card-footer>
+          <li class="list-group-item active" aria-current="true">MAKE YOUR LIST... HAVE FUN !!! <mat-icon matSuffix>  insert_emoticon</mat-icon></li>
+          <li style="background:yellow" *ngFor="let aj of data1" class="list-group-item">{{aj.fullname.toUpperCase()}}</li>
+          <mat-card-footer>
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+          </mat-card-footer>
+        </ul>
+        <br><br>
+        <mat-form-field class="aj1" appearance="outline" >
+          <mat-label >Click-here</mat-label>
+          <input #id formControlName="item" matInput placeholder="enter task"  >
+          <mat-icon matSuffix> chat</mat-icon>
+        </mat-form-field>
+        <div class="row">
+          <div class="col">
+            <mat-form-field appearance="fill" >
+              <mat-label>Place</mat-label>
+              <mat-select formControlName="place" placeholder="place">
+                <mat-option value=" "></mat-option>
+                <mat-option value=" House">House</mat-option>
+                <mat-option value=" Office">Office</mat-option>
+                <mat-option value=" Shop">Shop</mat-option>
+                <mat-option value=" Park">Park</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <!-- <div class="row">
+            <div class="col">
+              <mat-form-field appearance="fill" >
+                <mat-label>Person</mat-label>
+                <mat-select  formControlName="place" placeholder="place">
+                  <mat-option value=" "></mat-option>
+                  <mat-option *ngFor="let aj of data1" value="">{{aj.fullname}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div> -->
+
+          <div class="col">
+            <mat-form-field appearance="fill">
+              <mat-label>Choose a date</mat-label>
+              <input formControlName="date" matInput [matDatepicker]="picker">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+        <br>
+        <button *ngIf="!isEditEnabled" [disabled]="todoForm.invalid" mat-raised-button color="primary" (click)="addTask(id.name)">Add</button>
+        <button *ngIf="isEditEnabled" mat-raised-button color="primary" (click)="edit()">Update</button>
+      </form>
+    </div>
+    <div class="col-md-9" style="background-color: black">
+      <div cdkDropListGroup>
+        <div class="row" >
+          <!--to do container-->
+          <div class="col-md-4">
+            <div class="example-container">
+              <h2 class="head">TO DO</h2>
+              <div cdkDropList [cdkDropListData]="tasks" class="example-list" (cdkDropListDropped)="drop($event)">
+                <div class="example-box" *ngFor="let item of tasks | filter:term;let i = index" cdkDrag >
+                  <h4> {{item.description}} <br><br> <h2>{{item.place}}</h2> {{item.date | date}}</h4>
+                  <div class="box" >
+                    <button mat-icon-button color="warn" (click)="deleteTask(i)"><mat-icon>delete</mat-icon></button>
+                    <button mat-icon-button color="accent" (click)="updateTask(item,i)"><mat-icon>edit</mat-icon></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--Inprogess container-->
+          <div class="col-md-4">
+            <div class="example-container">
+              <h2 class="head">IN-PROGESS</h2>
+              <div cdkDropList [cdkDropListData]="inprogess" class="example-list" (cdkDropListDropped)="drop($event)">
+                <div class="example-box" *ngFor="let item of inprogess | filter:term;let i = index" cdkDrag>
+                  <h4>{{item.description}} <br><br> <h2>{{item.place}}</h2> {{item.date | date}}
+                    <mat-card-footer>
+                      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+                    </mat-card-footer></h4>
+                  <div class="box">
+                    <button mat-icon-button color="warn" (click)="deleteInProgess(i)"><mat-icon>delete</mat-icon></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--done container-->
+          <div class="col-md-4">
+            <div class="example-container">
+              <h2 class="head">DONE</h2>
+              <div cdkDropList [cdkDropListData]="done" class="example-list" (cdkDropListDropped)="drop($event)">
+                <div class="example-box" *ngFor="let item of done | filter:term" cdkDrag>
+                  <h4>{{item.description}} <br><br> <h2>{{item.place}}</h2> {{item.date | date}}
+                    <mat-card-footer>
+                      <mat-progress-bar mode="determinate" style="background: green"></mat-progress-bar>
+                    </mat-card-footer></h4>
+                  <button mat-icon-button color="primary"><mat-icon color="primary">offline_pin</mat-icon></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,21 @@
+.container-md{
+  padding-top: 2cm;
+  padding-left: 3cm;
+  padding-right: 3cm;
+  padding-bottom: 4cm;
+}
+
+.container-md mat-form-field{
+  padding-top: 1cm;
+  background:aquamarine;
+  padding-left: 2cm;
+  padding-right: 3cm;
+}
+.row-7{
+  padding-left: 5cm;
+}
+
+.row{
+  padding-left: 5cm;
+}
+

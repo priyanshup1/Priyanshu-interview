@@ -1,0 +1,47 @@
+{
+  "productlist": [
+    {
+      "item": "its playing time",
+      "place": " House",
+      "date": "",
+      "id": 1
+    },
+    {
+      "item": "asdfghjkl",
+      "place": " House",
+      "date": null,
+      "id": 2
+    },
+    {
+      "item": "gfghj",
+      "place": " House",
+      "date": "",
+      "id": 3
+    },
+    {
+      "item": "nnnnnnnnnnnnnnnnn",
+      "place": " Office",
+      "date": "",
+      "id": 4
+    }
+  ],
+  "signup": [
+    {
+      "fullname": "priyanshu",
+      "email": "wee",
+      "password": "1234",
+      "phoneNo": 66666,
+      "id": 1
+    },
+    {
+      "fullname": "priysanshu",
+      "email": "priyanshu@gmail.com",
+      "password": "123456",
+      "phoneNo": 23456789,
+      "id": 2
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

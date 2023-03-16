@@ -1,0 +1,21 @@
+<nav mat-tab-nav-bar [backgroundColor]="background" style="padding-top: 20px">
+<ul class="nav nav-pills nav-fill">
+  <button mat-raised-button class="example-action-button" (click)="toggleBackground()">
+    Toggle background
+  </button>
+  <li class="nav-item">
+    <a routerLink="home" class="nav-link active" aria-current="page" >HOME</a>
+  </li>
+  <li class="nav-item">
+    <a routerLink="toDoList" class="nav-link active" aria-current="page" >My-To-Do_list</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" >Link</a>
+  </li>
+  <li class="nav-item">
+    <mat-slide-toggle style="padding-left: 1000%;padding-block-end:-20%;color: #fafafa" color="primary">night mode</mat-slide-toggle>
+  </li>
+
+</ul>
+
+  </nav>
